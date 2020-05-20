@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Combat;
 
 
 namespace RPG.Movement
@@ -11,12 +12,13 @@ namespace RPG.Movement
     {
         private NavMeshAgent _navMeshAgent;
         private Animator _animator;
-    
+        private Fighter _fighter;
 
         void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
+            _fighter = GetComponent<Fighter>();
         }
 
         void Update()
@@ -24,9 +26,23 @@ namespace RPG.Movement
             UpdateAnimator();
         }
 
+        public void StartMoveAction(Vector3 point)
+        {
+            _fighter.Cancel();
+            MoveTo(point);
+        }
+
         public void MoveTo(Vector3 point)
         {
+            _navMeshAgent.isStopped = false;
             _navMeshAgent.destination = point;
+
+        }
+
+        public void Stop()
+        {
+            _navMeshAgent.isStopped = true;
+            //print("stopped navmeshagent.");
         }
 
         private void UpdateAnimator()
