@@ -12,22 +12,26 @@ namespace RPG.Combat
     {
         
         [FormerlySerializedAs("fighterRange")] [SerializeField] float weaponRange = 2f;
-        [SerializeField] private float timeBetweenAttacks = 0.5f;
+        [SerializeField] private float timeBetweenAttacks = 0.5f; //for now, can't be greater than 0.5
+        [SerializeField] private float fistDamage = 10f;
+        
         private Transform target;
         private ActionScheduler _scheduler;
         private Mover _mover;
         private Animator _animator;
-        private float timeSinceLastAttack;
+        private float timeSinceLastAttack = Mathf.Infinity;
 
         private void Start()
         {
             _scheduler = GetComponent<ActionScheduler>();
             _mover = GetComponent<Mover>();
+            _animator = GetComponent<Animator>();
         }
 
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
+            print(timeSinceLastAttack);
             
             if (target == null) return;
             
@@ -46,10 +50,19 @@ namespace RPG.Combat
         {
             if (timeSinceLastAttack >= timeBetweenAttacks)
             {
+                // this will trigger hit event
                 _animator.SetTrigger("attack");
                 timeSinceLastAttack = 0;
             }
 
+        }
+        
+        // Animation event
+        private void Hit()
+        {
+            if (target == null) return;
+
+            target.GetComponent<Health>().TakeDamage(fistDamage);
         }
 
         private bool IsInRange()
@@ -70,11 +83,7 @@ namespace RPG.Combat
             target = null;
         }
         
-        // Animation event
-        private void Hit()
-        {
-            
-        }
+
     }
 }
 
