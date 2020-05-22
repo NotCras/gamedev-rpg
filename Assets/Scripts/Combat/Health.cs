@@ -2,19 +2,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RPG.Combat
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] private float health = 100f;
+        [FormerlySerializedAs("health")] [SerializeField] private float healthPoints = 100f;
         
+        private bool isDead = false;
+
         public void TakeDamage(float damage)
         {
-            health = Mathf.Max(health - damage, 0);
+            healthPoints = Mathf.Max(healthPoints - damage, 0);
 
-            print("Health: " + health);
+            print("Health: " + healthPoints);
+
+            if (healthPoints == 0 && !isDead)
+            {
+                Die();
+            }
         }
 
+        public bool IsDead()
+        {
+            return isDead;
+        }
+
+        private void Die()
+        {
+            isDead = true;
+            GetComponent<Animator>().SetTrigger("die");
+        }
     }
+    
 }
