@@ -13,16 +13,20 @@ namespace RPG.Movement
         private NavMeshAgent _navMeshAgent;
         private Animator _animator;
         private ActionScheduler _scheduler;
+        private Health _health;
 
         void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _animator = GetComponent<Animator>();
             _scheduler = GetComponent<ActionScheduler>();
+            _health = GetComponent<Health>();
         }
 
         void Update()
         {
+            _navMeshAgent.enabled = !_health.IsDead();
+            
             UpdateAnimator();
         }
 
@@ -42,7 +46,6 @@ namespace RPG.Movement
         public void Cancel()
         {
             _navMeshAgent.isStopped = true;
-            //print("stopped navmeshagent.");
         }
 
         private void UpdateAnimator()
