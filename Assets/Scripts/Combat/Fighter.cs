@@ -31,7 +31,7 @@ namespace RPG.Combat
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
-            print(timeSinceLastAttack);
+            //print(timeSinceLastAttack);
             
             if (target == null) return;
             if (target.GetComponent<Health>().IsDead()) return;
@@ -43,7 +43,7 @@ namespace RPG.Combat
             }
             else
             {
-                _mover.MoveTo(target.position);
+                _mover.MoveTo(target.position, 1f);
             }
         }
 
