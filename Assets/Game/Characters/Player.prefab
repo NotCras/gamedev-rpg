@@ -12,6 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a22994f5b569294b9b5aa5ec8b96fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &2160999303331871210
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126169381266476253}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &2996228491120640463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,7 +111,7 @@ PrefabInstance:
     - target: {fileID: 7132368118983173646, guid: 036a41cab52779a1dad81c4c03c2b77e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.24166107
       objectReference: {fileID: 0}
     - target: {fileID: 7132368118983173646, guid: 036a41cab52779a1dad81c4c03c2b77e,
         type: 3}
@@ -107,22 +121,22 @@ PrefabInstance:
     - target: {fileID: 7132368118983173646, guid: 036a41cab52779a1dad81c4c03c2b77e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -25.4
       objectReference: {fileID: 0}
     - target: {fileID: 7132368118983173646, guid: 036a41cab52779a1dad81c4c03c2b77e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7132368118983173646, guid: 036a41cab52779a1dad81c4c03c2b77e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7132368118983173646, guid: 036a41cab52779a1dad81c4c03c2b77e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7132368118983173646, guid: 036a41cab52779a1dad81c4c03c2b77e,
         type: 3}
